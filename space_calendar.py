@@ -5,8 +5,8 @@ from tkcalendar import *
 from PIL import Image, ImageTk
 import base64, io
 
-#Commented out for security reasons
-apiKey = 'smk2vJYgU4G8EzOnuwBFnQaOvcmTbd5vzDfh6DRm'
+#Left out for security
+apiKey = 'API_KEY'
 
 root = Tk()
 root.title('Space Calendar')
@@ -33,7 +33,7 @@ def get_image():
     explanation.config(text = selection["explanation"])
     explanation.pack()
 
-    #Get image out of jpg, since Tkinter can't use that
+    #Get image out of jpg, since Tkinter prefers png's and gif's
     r = requests.get(selection["hdurl"], stream = True)
     aux_im = Image.open(io.BytesIO(r.content))
     aux_im = aux_im.resize((750, 750), Image.ANTIALIAS)
